@@ -1,3 +1,4 @@
+[
 	{
 		"command": "say",
 		"text": "時間になりました、◯◯しましょう！"
@@ -38,3 +39,4 @@
 		"command": "act-normal-2-44",
 		"text": ""
 	}
+]
