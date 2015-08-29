@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>単純なJavaScript (ログ出力)</title>
+    <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
+    <script>
+      var session = new QiSession();
+      
+      // ログを出力するだけの関数
+      // <button>が押されると、onclick属性に指定されたスクリプトが実行され、この関数が
+	// 実行されます。
+	// しゃべるテスト（こんにちは）
+	function sampleButtonClicked1() {
+	saytext("こんにちは。こんにちは。")
+	}
+
+	// しゃべるテスト（こんばんは）
+	function sampleButtonClicked2() {
+	saytext("こんばんは。こんばんは。")
+	}
+
+	// 動きテスト
+	function sampleButtonClicked3() {
+	someAction("1");
+	}
+
+	// しゃべられる
+	function saytext(text){
+	session.service("ALMemory").done(function (ALMemory) {
+	ALMemory.raiseEvent("PepperQiMessaging/fromtablet", text);
+	});
+	}
+	
+	// 動き
+	function someAction(action){
+	session.service("ALMemory").done(function (ALMemory) {
+	 ALMemory.raiseEvent("PepperQiAction/fromtablet",action);
+	});
+	}
+
+    </script>
+  </head>
+  <body>
+    <div style="font-size: 6em">
+      動作チェック
+    </div>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked1();">こんにちは</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked2();">こんばんは</button>
+   <button style="font-size: 6em" type="button" onclick="sampleButtonClicked3();">ダンス</button>
+
+  </body>
+</html>
