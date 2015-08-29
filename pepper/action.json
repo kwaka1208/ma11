@@ -1,0 +1,40 @@
+	{
+		"command": "say",
+		"text": "時間になりました、◯◯しましょう！"
+	},
+	{
+		"command": "act-normal-1-24",
+		"text": ""
+	},
+	{
+		"command": "say",
+		"text": "早くやらないと、後が大変ですよ。"
+	},
+	{
+		"command": "act-normal-1-13",
+		"text": ""
+	},
+	{
+		"command": "say",
+		"text": "◯◯しませんでしたね？報告します！"
+	},
+	{
+		"command": "act-negative-8",
+		"text": ""
+	},
+	{
+		"command": "say",
+		"text": "よくやりましたね、グッジョブ！"
+	},
+	{
+		"command": "act-positive-2",
+		"text": ""
+	},
+	{
+		"command": "say",
+		"text": "〜はしましたか？"
+	},
+	{
+		"command": "act-normal-2-44",
+		"text": ""
+	}
