@@ -22,10 +22,10 @@
 			function poke(data) {
 				var len = data.length;
 				for (i = 0; i < len; i++) {
-					if( data[i].command == "say") {
-						saytext(data[i].text);
+					if( data[i].Action == "Say") {
+						saytext(data[i].Txt);
 					} else {
-						someAction(data[i].command);
+						someAction(data[i].Action);
 					}
 				}
 			}

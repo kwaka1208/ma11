@@ -1,4 +1,4 @@
 	{
-		"command": "say",
-		"text": "こんにちは"
+		"Action": "say",
+		"Txt": "こんにちは"
 	}

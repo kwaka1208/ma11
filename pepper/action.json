@@ -1,42 +1,42 @@
 [
 	{
-		"command": "say",
-		"text": "時間になりました、◯◯しましょう！"
+		"Action": "Say",
+		"Txt": "時間になりました、◯◯しましょう！"
 	},
 	{
-		"command": "act-normal-1-24",
-		"text": ""
+		"Action": "Act-normal-1-24",
+		"Txt": ""
 	},
 	{
-		"command": "say",
-		"text": "早くやらないと、後が大変ですよ。"
+		"Action": "Say",
+		"Txt": "早くやらないと、後が大変ですよ。"
 	},
 	{
-		"command": "act-normal-1-13",
-		"text": ""
+		"Action": "Act-normal-1-13",
+		"Txt": ""
 	},
 	{
-		"command": "say",
-		"text": "◯◯しませんでしたね？報告します！"
+		"Action": "Say",
+		"Txt": "◯◯しませんでしたね？報告します！"
 	},
 	{
-		"command": "act-negative-8",
-		"text": ""
+		"Action": "Act-negative-8",
+		"Txt": ""
 	},
 	{
-		"command": "say",
-		"text": "よくやりましたね、グッジョブ！"
+		"Action": "Say",
+		"Txt": "よくやりましたね、グッジョブ！"
 	},
 	{
-		"command": "act-positive-2",
-		"text": ""
+		"Action": "Act-positive-2",
+		"Txt": ""
 	},
 	{
-		"command": "say",
-		"text": "〜はしましたか？"
+		"Action": "Say",
+		"Txt": "〜はしましたか？"
 	},
 	{
-		"command": "act-normal-2-44",
-		"text": ""
+		"Action": "Act-normal-2-44",
+		"Txt": ""
 	}
 ]
