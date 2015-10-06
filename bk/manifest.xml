@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package uuid="simple-js-2ea692" version="0.0.0">
+<package version="0.0.0" uuid="pepper-62bec5">
  <names>
-  <name lang="en_US">simple-js</name>
+  <name lang="en_US">Pepper</name>
  </names>
  <supportedLanguages>
   <language>en_US</language>
@@ -10,7 +10,8 @@
   <language>en_US</language>
  </descriptionLanguages>
  <contents>
-  <behaviorContent path="html">
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
    <nature>interactive</nature>
    <permissions/>
   </behaviorContent>

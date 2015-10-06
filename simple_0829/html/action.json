@@ -1,0 +1,42 @@
+[
+	{
+		"Action": "Say",
+		"Txt": "時間になりました、◯◯しましょう！"
+	},
+	{
+		"Action": "Act-normal-1-24",
+		"Txt": ""
+	},
+	{
+		"Action": "Say",
+		"Txt": "早くやらないと、後が大変ですよ。"
+	},
+	{
+		"Action": "Act-normal-1-13",
+		"Txt": ""
+	},
+	{
+		"Action": "Say",
+		"Txt": "◯◯しませんでしたね？報告します！"
+	},
+	{
+		"Action": "Act-negative-8",
+		"Txt": ""
+	},
+	{
+		"Action": "Say",
+		"Txt": "よくやりましたね、グッジョブ！"
+	},
+	{
+		"Action": "Act-positive-2",
+		"Txt": ""
+	},
+	{
+		"Action": "Say",
+		"Txt": "〜はしましたか？"
+	},
+	{
+		"Action": "Act-normal-2-44",
+		"Txt": ""
+	}
+]

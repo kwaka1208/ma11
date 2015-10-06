@@ -11,7 +11,7 @@
 			/**
 				WebSocketレスポンス受信時
 			*/
-			Connect("ws://localhost", onReceive);
+//			Connect("ws://localhost", onReceive);
 			function onReceive(evt) {
 				poke(evt.data);
 			}
@@ -33,7 +33,7 @@
 //			var session = new QiSession();
 			function fetchServer() {
 				$.ajax({
-					url: "action.json",
+					url: "pepper.json",
 					dataType: "json",
 					cache: false,
 					success: function(data){
@@ -76,7 +76,3 @@
 		</div>
 	</body>
 </html>
-
-
-
-

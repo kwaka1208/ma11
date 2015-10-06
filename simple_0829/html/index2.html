@@ -32,12 +32,12 @@
 				}
 			}
 
-			var session = new QiSession();
+//			var session = new QiSession();
 			function fetchServer() {
 				$.ajax({
 //					url: "http://163.221.14.161:3500/gomi",
-					url:"http://163.221.14.161:3500/sabori",
-//					url: "pepper.json",
+//					url:"http://163.221.14.161:3500/sabori",
+					url: "pepper.json",
 					dataType: "json",
 					cache: false,
 					success: function(data){
@@ -54,9 +54,9 @@
 			function saytext(text){
 				if (text == "") return;
 				//	$("#output").append("ここで、Pepperが" + text + "と話します。<br />");
-					session.service("ALMemory").done(function (ALMemory) {
-					ALMemory.raiseEvent("PepperQiMessaging/fromtablet", text);
-					});
+//					session.service("ALMemory").done(function (ALMemory) {
+//					ALMemory.raiseEvent("PepperQiMessaging/fromtablet", text);
+//					});
 			}
 
 			// 画像変更
@@ -71,13 +71,13 @@
 			function someAction(action){
 					changeImage(action);
 			//		$("#output").append("ここで、Pepperが" + action + "の動きをします。<br />");
-					session.service("ALMemory").done(function (ALMemory) {
-					ALMemory.raiseEvent("PepperQiAction/fromtablet",action);
-					});
+//					session.service("ALMemory").done(function (ALMemory) {
+//					ALMemory.raiseEvent("PepperQiAction/fromtablet",action);
+//					});
 			}
 				//			fetchServer();
 				//			setInterval(fetchServer, 30000);	// 1秒間隔でサーバーをチェック
-				setTimeout(fetchServer, 30000);	// 1秒間隔でサーバーをチェック
+							setTimeout(fetchServer, 5000);	// 1秒間隔でサーバーをチェック
 		</script>
 	</head>
 	<body background="img/bg_pink.png">
