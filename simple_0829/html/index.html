@@ -9,10 +9,22 @@
 		<!-- script src="websocket.js"></script -->
 		<script src="/libs/qimessaging/1.0/qimessaging.js"></script>
 		<script>
+			// WebSocket or Ajaxによるポーリング切り替えフラグ
+			// trueであれば、WebSocketを使う。
+			var ws = new Boolean(true);
 			/**
 				WebSocketレスポンス受信時
 			*/
-//			Connect("ws://localhost", onReceive);
+			if (ws) {
+				Connect("ws://localhost", onReceive);
+			} else {
+				// WebSocketでなければ、Ajaxによるポーリング処理を起動。
+				setTimeout(fetchServer, 30000);
+			}
+
+			/*
+				WebSocketの受信イベントハンドラ
+			*/
 			function onReceive(evt) {
 				poke(evt.data);
 			}
@@ -32,7 +44,6 @@
 				}
 			}
 
-			var session = new QiSession();
 			function fetchServer() {
 				$.ajax({
 //					url: "http://163.221.14.161:3500/gomi",
@@ -43,14 +54,16 @@
 					success: function(data){
 //						$("#output").append(data);
 						poke(data);
-						setTimeout(fetchServer, 30000);	// 1秒間隔でサーバーをチェック
+						setTimeout(fetchServer, 30000);	// 次のサーバーチェックタイミングをセット
 					},
 					error: function(data){
 		//				$("#output").append("読み込み失敗<br />");
 					}
 				});
 			}
-			// しゃべられる
+
+			var session = new QiSession();
+			// しゃべらせる
 			function saytext(text){
 				if (text == "") return;
 				//	$("#output").append("ここで、Pepperが" + text + "と話します。<br />");
@@ -60,7 +73,6 @@
 			}
 
 			// 画像変更
-			var counter = 0;
 			function changeImage(action){
 				var image = "img/" + action + "_1" + ".GIF";
 			//				$("#output").append(image);
@@ -75,9 +87,6 @@
 					ALMemory.raiseEvent("PepperQiAction/fromtablet",action);
 					});
 			}
-				//			fetchServer();
-				//			setInterval(fetchServer, 30000);	// 1秒間隔でサーバーをチェック
-				setTimeout(fetchServer, 30000);	// 1秒間隔でサーバーをチェック
 		</script>
 	</head>
 	<body background="img/bg_pink.png">
