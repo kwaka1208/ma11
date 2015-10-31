@@ -10,8 +10,8 @@ photo = ALProxy("ALPhotoCapture", "192.168.10.74", 9559)
 photo.setPictureFormat("jpeg")
 
 # 解像度の指定(0 = kQQVGA, 1 = kQVGA, 2 = kVGA)
-photo.setResolution(2)
+photo.setResolution(4)
 
 # 保存先を指定して画像をキャプチャ
-photo.takePicture("/home/nao/recordings/cameras/", "image")
+photo.takePicture("/home/nao/recordings/cameras/", "image1")
 

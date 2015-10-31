@@ -1,44 +1,73 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-import websocket
-import thread
+import sys
 import time
-import json
+
 from naoqi import ALProxy
 robotIP = "192.168.10.74" 
 
-def on_message(ws, message):
-    print message
-    receive=json.loads(message)
-    print receive
+memory = ALProxy("ALMemory", robotIP, 9559)
 
-    target_action = str(receive["Action"])
-    target_data = str(receive["Txt"])
-    print target_action
-    print target_data
+############
+# motion #
+############
+motion = ALProxy("ALMotion", robotIP, 9559)
+#motion.wakeUp()
+#motion.rest()
+
+motion.moveInit()
+motion.moveTo(0.5, 0, 0)
+#motion.post.moveTo(0.5, 0, 0)
+
+
+############
+# Speech #
+############
+tts  = ALProxy("ALTextToSpeech", robotIP, 9559)
+tts.setLanguage("Japanese")
+#tts.setParameter("speed", 0.5)
+tts.setParameter("pitchShift", 1.0)
+#tts.say("ぼくは、ペッパー")
+
+# ############
+# # Speech Recognition #
+# ############
+# asr = ALProxy("ALSpeechRecognition", robotIP, 9559)
+# asr.setLanguage("Japanese")
+# asr.pause(True)
+
+# vocabulary = ["こんにちは", "ペッパー"]
+# asr.setVocabulary(vocabulary, False)
+# print 'Speech recognition engine started'
+
+# # Start the speech recognition engine with user Test_ASR
+# asr.subscribe("Test_ASR")
+# #time.sleep(20)
+
+# while True:
+#     sayData = memory.getData("WordRecognized")
+#     print( "data: %s" % sayData )
+# #    print type(sayData)
+# #    print str(sayData)
+# #    print type(str(sayData))
+#     if sayData == "こんにちは":
+#         tts.say("こんにちは。ぼくは、ペッパー")
     
-    tts = ALProxy("ALTextToSpeech", robotIP, 9559)
-#    tts.setLanguage("Japanese")
-    tts.setLanguage("English")
-#    tts.setParameter("pitchShift", 1.5)
-    tts.say(target_data)
+# asr.unsubscribe("Test_ASR")
+        
 
-def on_error(ws, error):
-    print error
+############
+# Posture #
+############
+try:
+    postureProxy = ALProxy("ALRobotPosture", robotIP, 9559)
+except Exception, e:
+    print "Could not create proxy to ALRobotPosture"
+    print "Error was: ", e
+    
+#postureProxy.goToPosture("Crouch",0.8)
+postureProxy.goToPosture("StandInit", 1.0)
+#postureProxy.goToPosture("LyingLeft", 1.0)
 
-def on_close(ws):
-    print "### closed ###"
+#print postureProxy.getPostureFamily()
 
-def on_open(ws):
-    command = json.dumps({'Action': '', 'Txt': 'I am Pepper!!'}, separators=(',',':'), ensure_ascii=False)
-    ws.send(command)
-
-if __name__ == "__main__":
-    websocket.enableTrace(True)
-    ws = websocket.WebSocketApp("ws://echo.websocket.org/",
-                              on_message = on_message,
-                              on_error = on_error,
-                              on_close = on_close)
-    ws.on_open = on_open
-    ws.run_forever()

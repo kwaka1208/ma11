@@ -13,9 +13,10 @@ memory = ALProxy("ALMemory", robotIP, 9559)
 ############
 motion = ALProxy("ALMotion", robotIP, 9559)
 #motion.wakeUp()
-motion.moveInit()
 motion.rest()
-#motion.moveTo(0.5, 0, 0)
+
+motion.moveInit()
+motion.moveTo(0.5, 0, 0)
 #motion.post.moveTo(0.5, 0, 0)
 
 
@@ -28,27 +29,31 @@ tts.setLanguage("Japanese")
 tts.setParameter("pitchShift", 1.0)
 #tts.say("ぼくは、ペッパー")
 
-############
-# Speech Recognition #
-############
-asr = ALProxy("ALSpeechRecognition", robotIP, 9559)
-asr.setLanguage("Japanese")
-asr.pause(True)
+# ############
+# # Speech Recognition #
+# ############
+# asr = ALProxy("ALSpeechRecognition", robotIP, 9559)
+# asr.setLanguage("Japanese")
+# asr.pause(True)
 
-vocabulary = ["こんにちは", "ペッパー"]
-asr.setVocabulary(vocabulary, False)
-print 'Speech recognition engine started'
-time.sleep(20)
+# vocabulary = ["こんにちは", "ペッパー"]
+# asr.setVocabulary(vocabulary, False)
+# print 'Speech recognition engine started'
 
-# Start the speech recognition engine with user Test_ASR
-asr.subscribe("Test_ASR")
-#while True:
-sayData = memory.getData("WordRecognized")
-print sayData
-if sayData == "こんにちは":
-    tts.say("こんにちは。ぼくは、ペッパー")
+# # Start the speech recognition engine with user Test_ASR
+# asr.subscribe("Test_ASR")
+# #time.sleep(20)
+
+# while True:
+#     sayData = memory.getData("WordRecognized")
+#     print( "data: %s" % sayData )
+# #    print type(sayData)
+# #    print str(sayData)
+# #    print type(str(sayData))
+#     if sayData == "こんにちは":
+#         tts.say("こんにちは。ぼくは、ペッパー")
     
-asr.unsubscribe("Test_ASR")
+# asr.unsubscribe("Test_ASR")
         
 
 ############
@@ -62,5 +67,7 @@ except Exception, e:
     
 #postureProxy.goToPosture("Crouch",0.8)
 #postureProxy.goToPosture("StandInit", 1.0)
+#postureProxy.goToPosture("LyingLeft", 1.0)
+
 #print postureProxy.getPostureFamily()
 
