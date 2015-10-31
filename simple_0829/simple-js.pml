@@ -56,6 +56,9 @@
         <File name="room" src="html/img/room.jpg" />
         <File name="wash" src="html/img/wash.jpg" />
         <File name="index2" src="html/index2.html" />
+        <File name="index" src="html/index.html_" />
+        <File name="index3" src="html/index3.html~" />
+        <File name="memo" src="html/memo.txt" />
     </Resources>
     <Topics />
     <IgnoredPaths />

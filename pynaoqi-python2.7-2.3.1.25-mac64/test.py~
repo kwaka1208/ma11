@@ -1,0 +1,6 @@
+# coding: UTF-8
+from naoqi import ALProxy
+
+tts = ALProxy("ALTextToSpeech", "192.168.10.74", 9559)
+tts.setLanguage("Japanese")
+tts.say("こんにちは、pepperです")

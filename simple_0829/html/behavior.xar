@@ -10,14 +10,14 @@
         <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
         <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
         <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
-        <Input name="ALTabletService/message" type="0" type_size="1" nature="4" stm_value_name="ALTabletService/message" inner="1" tooltip="ALTabletService/message desc" id="4" />
-        <Input name="PepperQiMessaging/fromtablet" type="0" type_size="1" nature="4" stm_value_name="PepperQiMessaging/fromtablet" inner="1" tooltip="PepperQiMessaging/fromtablet desc" id="5" />
-        <Input name="PepperQiAction/fromtablet" type="0" type_size="1" nature="4" stm_value_name="PepperQiAction/fromtablet" inner="1" tooltip="PepperQiAction/fromtablet desc" id="6" />
+        <Input name="PepperQiMessaging/fromtablet" type="0" type_size="1" nature="4" stm_value_name="PepperQiMessaging/fromtablet" inner="1" tooltip="PepperQiMessaging/fromtablet desc" id="4" />
+        <Input name="PepperQiAction/fromtablet" type="0" type_size="1" nature="4" stm_value_name="PepperQiAction/fromtablet" inner="1" tooltip="PepperQiAction/fromtablet desc" id="5" />
+        <Input name="ALTabletService/message" type="0" type_size="1" nature="4" stm_value_name="ALTabletService/message" inner="1" tooltip="ALTabletService/message desc" id="6" />
         <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="ボックス動作の終了時に信号を送る。" id="7" />
         <Timeline enable="0">
             <BehaviorLayer name="behavior_layer1">
                 <BehaviorKeyframe name="keyframe1" index="1">
-                    <Diagram>
+                    <Diagram scale="100">
                         <Box name="Show App" id="2" localization="8" tooltip="Loads the application on the tablet, if it exists, and displays the webview.&#x0A;&#x0A;V1.0.0&#x0A;" x="245" y="47">
                             <bitmap>media/images/box/root.png</bitmap>
                             <script language="4">
@@ -43,7 +43,14 @@ class MyClass(GeneratedClass):
     def _getTabletService(self):
         tabletService = None
         try:
+
             tabletService = self.session().service("ALTabletService")
+            tabletService.enableWiFi()
+            tabletService.configureWifi("wpa", "aterm-3dcf7c-g", "5490383463a3b")
+            #tabletService.showWebview()
+             # 表示したいWebページのURLを読み込む
+            #tabletService.loadUrl("http://yahoo.co.jp/")
+
         except Exception as e:
             self.logger.error(e)
         return tabletService
@@ -59,7 +66,7 @@ class MyClass(GeneratedClass):
                     self.logger.error("appsFolderFragment is not in behaviorPath")
                     return None
             fragment = behaviorPath.split(appsFolderFragment, 1)[1]
-            fragment = fragment.split("/")[1]
+            fragment = fragment.split('/')[1]
             return fragment.lstrip("\\/")
         else:
             self.logger.warning("No ALFrameManager")
@@ -95,7 +102,7 @@ class MyClass(GeneratedClass):
                             <Output name="onSuccess" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished successfully." id="3" />
                             <Output name="onFailure" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished unsuccessfully." id="4" />
                         </Box>
-                        <Box name="Log" id="1" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="445" y="98">
+                        <Box name="Log" id="1" localization="8" tooltip="Prompt the message in the debug window. You can set a prefix and a priority&#x0A;for the message in the parameters." x="125" y="149">
                             <bitmap>media/images/box/print.png</bitmap>
                             <script language="4">
                                 <content>
@@ -199,7 +206,7 @@ class MyClass(GeneratedClass):
                             <Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" />
                             <Resource name="Speech" type="Lock" timeout="0" />
                         </Box>
-                        <Box name="Switch Case" id="5" localization="8" tooltip="Test input value and stimulate the output matching to this value. If there is no&#x0A;matching output, the default output (onDefault) is stimulated.&#x0A;&#x0A;You can edit a case by left double-clicking on the line. You can add a&#x0A;case by right clicking on a line and selecting &apos;Insert a row&apos;. You can delete&#x0A;a case by right clicking on a line and selecting &apos;Remove a row&apos;." plugin="dispatcher_plugin" x="21" y="269">
+                        <Box name="Switch Case" id="5" localization="8" tooltip="Test input value and stimulate the output matching to this value. If there is no&#x0A;matching output, the default output (onDefault) is stimulated.&#x0A;&#x0A;You can edit a case by left double-clicking on the line. You can add a&#x0A;case by right clicking on a line and selecting &apos;Insert a row&apos;. You can delete&#x0A;a case by right clicking on a line and selecting &apos;Remove a row&apos;." plugin="dispatcher_plugin" x="80" y="285">
                             <bitmap>media/images/box/interaction/choice.png</bitmap>
                             <script language="4">
                                 <content>
@@ -1094,14 +1101,14 @@ class MyClass(GeneratedClass):
                             </Parameter>
                         </Box>
                         <Link inputowner="2" indexofinput="2" outputowner="0" indexofoutput="2" />
-                        <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="4" />
-                        <Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="5" />
-                        <Link inputowner="5" indexofinput="2" outputowner="0" indexofoutput="6" />
+                        <Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="4" />
+                        <Link inputowner="5" indexofinput="2" outputowner="0" indexofoutput="5" />
                         <Link inputowner="159" indexofinput="2" outputowner="5" indexofoutput="4" />
                         <Link inputowner="7" indexofinput="2" outputowner="5" indexofoutput="5" />
                         <Link inputowner="40" indexofinput="2" outputowner="5" indexofoutput="6" />
                         <Link inputowner="103" indexofinput="2" outputowner="5" indexofoutput="7" />
                         <Link inputowner="8" indexofinput="2" outputowner="5" indexofoutput="8" />
+                        <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="6" />
                     </Diagram>
                 </BehaviorKeyframe>
             </BehaviorLayer>

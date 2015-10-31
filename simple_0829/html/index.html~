@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8">
-    <title>単純なJavaScript (ログ出力)</title>
-    <script>
-      // ログを出力するだけの関数
-      // <button>が押されると、onclick属性に指定されたスクリプトが実行され、この関数が
-      // 実行されます。
-      function sampleButtonClicked() {
-        console.log("sampleButtonClicked")
-      }
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pepper Action</title>
   </head>
-  <body>
-    <div style="font-size: 6em">
-      単純なJavaScript (ログ出力)
+  <body background="img/bg_pink.png">
+    <!-- a href="http://163.221.14.161:3500/gomi">data</a -->
+    <div id="output" align="center">
+      <img id="takemaru" src="./img/cook.jpg" align="middle" />
     </div>
-    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked();">ログ出力</button>
   </body>
 </html>

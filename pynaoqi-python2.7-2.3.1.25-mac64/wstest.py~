@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import websocket
+import thread
+import time
+import json
+#from naoqi import ALProxy
+
+def on_message(ws, message):
+    print message
+    receive=json.loads(message)
+
+    target_action = str(receive["Action"])
+    target_data   = str(receive["Txt"])
+    print target_action
+    print target_data
+    
+#    tts = ALProxy("ALTextToSpeech", pepper, 9559)
+#    tts.setLanguage("Japanese")
+#    tts.say(target_data)
+
+def on_error(ws, error):
+    print error
+
+def on_close(ws):
+    print "### closed ###"
+
+def on_open(ws):
+    command = json.dumps({'Action': '', 'Txt': 'Hello'}, separators=(',',':'))
+    ws.send(command)
+
+if __name__ == "__main__":
+    websocket.enableTrace(True)
+    ws = websocket.WebSocketApp("ws://echo.websocket.org/",
+                              on_message = on_message,
+                              on_error = on_error,
+                              on_close = on_close)
+    ws.on_open = on_open
+    ws.run_forever()

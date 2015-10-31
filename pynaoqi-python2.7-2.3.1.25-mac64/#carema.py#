@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from naoqi import ALProxy
+
+# Те╫ТеэТенТе╖Тд╬ТедТеєТе╣Те┐ТеєТе╣Т└╕Т└о
+photo = ALProxy("ALPhotoCapture", "192.168.10.74", 9559)
+
+# Те╒ТейТб╝Те▐Те├Те╚Тд╬Т╗╪Т─ъ(ЬЇЄ№bmpЬЇЄ¤, ЬЇЄ№dibЬЇЄ¤, ЬЇЄ№jpegЬЇЄ¤, ЬЇЄ№jpgЬЇЄ¤, ЬЇЄ№jpeЬЇЄ¤, ЬЇЄ№pngЬЇЄ¤, ЬЇЄ№pbmЬЇЄ¤, ЬЇЄ№pgmЬЇЄ¤, ЬЇЄ№ppmЬЇЄ¤, ЬЇЄ№srЬЇЄ¤, ЬЇЄ№rasЬЇЄ¤, ЬЇЄ№tiffЬЇЄ¤, ЬЇЄ№tifЬЇЄ¤ТдмТ╗╪Т─ъТ▓─Т╟╜)
+photo.setPictureFormat("jpeg")
+
+# Т▓ЄТ┴№Т┼┘Тд╬Т╗╪Т─ъ(0 = kQQVGA, 1 = kQVGA, 2 = kVGA)
+photo.setResolution(2)
+
+# Т╩▌Т┬╕Т└шТдЄТ╗╪Т─ъТд╖Тд╞Т▓шТ┴№ТдЄТенТеуТе╫Те┴Теу
+photo.takePicture("/home/nao/recordings/cameras/", "image")
+

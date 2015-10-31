@@ -1,0 +1,5 @@
+tabletService.enableWiFi()
+            tabletService.configureWifi("wpa", "aterm-3dcf7c-g", "5490383463a3b")
+            #tabletService.showWebview()
+             # 表示したいWebページのURLを読み込む
+            #tabletService.loadUrl("http://yahoo.co.jp/")
